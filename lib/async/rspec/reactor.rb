@@ -18,8 +18,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-require_relative 'leaks'
-
 require 'kernel/sync'
 require 'kernel/async'
 require 'async/reactor'
@@ -79,7 +77,6 @@ module Async
 			let(:reactor) {@reactor}
 			
 			rspec_context = Thread.current[:__rspec]
-			include_context Async::RSpec::Leaks
 			
 			around(:each) do |example|
 				duration = example.metadata.fetch(:timeout, 10)
